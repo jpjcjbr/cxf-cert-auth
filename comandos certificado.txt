@@ -1,0 +1,7 @@
+keytool -genkey -alias ws-client -keypass ws-client_pass -keystore client-keystore.jks -storepass keyStorePassword -dname "cn=ws-client" -keyalg RSA
+
+keytool -selfcert -alias ws-client -keystore client-keystore.jks -storepass keyStorePassword -keypass ws-client_pass
+
+keytool -export -alias ws-client -file key.rsa -keystore client-keystore.jks -storepass keyStorePassword
+
+keytool -import -alias ws-client  -file key.rsa -keystore server_publicstore.jks -storepass keyStorePassword
